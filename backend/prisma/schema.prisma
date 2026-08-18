@@ -7,34 +7,29 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  quizzes   Quiz[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+enum QuestionType {
+  BOOLEAN
+  INPUT
+  CHECKBOX
 }
 
 model Quiz {
   id          String     @id @default(uuid())
   title       String
   description String?
-  published   Boolean    @default(false)
-  authorId    String
-  author      User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
   questions   Question[]
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 }
 
 model Question {
-  id            String   @id @default(uuid())
+  id            String       @id @default(uuid())
   text          String
+  type          QuestionType @default(INPUT)
   options       String[]
-  correctAnswer Int
+  correctAnswer Int?
   quizId        String
-  quiz          Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  quiz          Quiz         @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
 }
