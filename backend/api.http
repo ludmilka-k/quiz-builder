@@ -1,0 +1,19 @@
+### Create Quizzes - request body
+POST http://localhost:4000/quizzes
+Content-Type: application/json
+
+{
+  "title": "TypeScript Fundamental",
+  "questions": [{
+    "text": "TypeScript type annotations are checked during the program's runtime execution.",
+    "type": "BOOLEAN",
+    "options": ["true", "false"],
+    "correctAnswer": 1
+  }]
+}
+
+### Fetch quizzes — response
+GET http://localhost:4000/quizzes
+
+### Fetch quizzes by ID  — response
+GET http://localhost:4000/quizzes/0562e016-af5b-4f36-9ac7-77f3080f0726
