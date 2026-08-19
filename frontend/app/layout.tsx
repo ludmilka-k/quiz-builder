@@ -18,6 +18,8 @@ export default function RootLayout({
           <h1 className="text-xl font-bold text-indigo-600">Quiz Builder</h1>
           <nav className="space-x-4">
             <a href="/" className="text-gray-600 hover:text-indigo-600 font-medium">Home</a>
+            <a href="/quizzes" className="text-gray-600 hover:text-indigo-600 font-medium">Quizzes</a>
+            <a href="/create" className="text-gray-600 hover:text-indigo-600 font-medium">Create Quiz</a>
           </nav>
         </header>
         <main className="flex-1 container mx-auto p-6">{children}</main>
