@@ -27,7 +27,9 @@ model Question {
   text          String
   type          QuestionType @default(INPUT)
   options       String[]
-  correctAnswer Int?
+  correctAnswerBoolean   Boolean?
+  correctAnswerInput     String?
+  correctAnswerCheckbox  Int[]
   quizId        String
   quiz          Quiz         @relation(fields: [quizId], references: [id], onDelete: Cascade)
   createdAt     DateTime     @default(now())

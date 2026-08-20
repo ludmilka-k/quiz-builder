@@ -2,10 +2,10 @@ import { Type } from 'class-transformer';
 import {
   ArrayNotEmpty,
   IsArray,
+  IsBoolean,
   IsEnum,
   IsInt,
   IsNotEmpty,
-  IsNumber,
   IsOptional,
   IsString,
   ValidateNested,
@@ -31,9 +31,17 @@ export class CreateQuestionDto {
   options?: string[];
 
   @IsOptional()
-  @IsNumber()
-  @IsInt()
-  correctAnswer?: number;
+  @IsBoolean()
+  correctAnswerBoolean?: boolean;
+
+  @IsOptional()
+  @IsString()
+  correctAnswerInput?: string;
+
+  @IsOptional()
+  @IsArray()
+  @IsInt({ each: true })
+  correctAnswerCheckbox?: number[];
 }
 
 export class CreateQuizDto {
