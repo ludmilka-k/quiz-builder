@@ -20,10 +20,20 @@ export function QuestionView({ question, index }: QuestionViewProps) {
       {question.type === 'BOOLEAN' && (
         <div className="flex gap-4">
           <label className="flex items-center gap-1 text-gray-600">
-            <input type="radio" disabled checked={question.correctAnswer === 0} /> True
+            <input
+              type="radio"
+              disabled
+              checked={question.correctAnswerBoolean === true}
+            />{' '}
+            True
           </label>
           <label className="flex items-center gap-1 text-gray-600">
-            <input type="radio" disabled checked={question.correctAnswer === 1} /> False
+            <input
+              type="radio"
+              disabled
+              checked={question.correctAnswerBoolean === false}
+            />{' '}
+            False
           </label>
         </div>
       )}
@@ -32,8 +42,9 @@ export function QuestionView({ question, index }: QuestionViewProps) {
         <input
           type="text"
           disabled
+          value={question.correctAnswerInput ?? ''}
           placeholder="Short answer"
-          className="w-full border p-2 rounded bg-gray-50 text-gray-400"
+          className="w-full border p-2 rounded bg-gray-50 text-gray-600"
         />
       )}
 
@@ -44,7 +55,7 @@ export function QuestionView({ question, index }: QuestionViewProps) {
               <input
                 type="checkbox"
                 disabled
-                checked={question.correctAnswer === optIdx}
+                checked={question.correctAnswerCheckbox?.includes(optIdx) ?? false}
               />
               <span>{option}</span>
             </li>

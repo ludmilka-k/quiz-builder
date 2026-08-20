@@ -50,23 +50,63 @@ export const QuestionForm: React.FC<QuestionFormProps> = ({ index, remove }) => 
       {type === 'CHECKBOX' && (
         <CheckboxOptions index={index} />
       )}
-      
-      {(type === 'BOOLEAN' || type === 'CHECKBOX') && (
+
+      {type === 'BOOLEAN' && (
         <div className="mb-2">
-          <label className="block mb-1">Correct Answer Index</label>
+          <label className="block mb-1">Correct Answer</label>
           <Controller
-            name={`questions.${index}.correctAnswer`}
+            name={`questions.${index}.correctAnswerBoolean`}
             control={control}
-            render={({ field, fieldState: { error } }) => (
-              <>
-                <input 
-                  type="number" 
-                  {...field} 
-                  onChange={(e) => field.onChange(parseInt(e.target.value))} 
-                  className="w-full border p-1 rounded" 
-                />
-                {error && <p className="text-red-500 text-sm">{error.message}</p>}
-              </>
+            render={({ field }) => (
+              <select {...field} value={field.value === null ? '' : String(field.value)} onChange={(e) => field.onChange(e.target.value === '' ? null : e.target.value === 'true')} className="w-full border p-1 rounded">
+                <option value="">Select an answer</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            )}
+          />
+        </div>
+      )}
+
+      {type === 'INPUT' && (
+        <div className="mb-2">
+          <label className="block mb-1">Correct Answer</label>
+          <Controller
+            name={`questions.${index}.correctAnswerInput`}
+            control={control}
+            render={({ field }) => (
+              <input {...field} className="w-full border p-1 rounded" />
+            )}
+          />
+        </div>
+      )}
+
+      {type === 'CHECKBOX' && (
+        <div className="mb-2">
+          <label className="block mb-1">Correct Answer (Select all that apply)</label>
+          <Controller
+            name={`questions.${index}.correctAnswerCheckbox`}
+            control={control}
+            render={({ field }) => (
+              <div>
+                {watch(`questions.${index}.options`)?.map((option, optionIndex) => (
+                  <label key={optionIndex} className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={(field.value || []).includes(optionIndex)}
+                      onChange={(e) => {
+                        const current = field.value || [];
+                        if (e.target.checked) {
+                          field.onChange([...current, optionIndex]);
+                        } else {
+                          field.onChange(current.filter((i: number) => i !== optionIndex));
+                        }
+                      }}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
             )}
           />
         </div>
