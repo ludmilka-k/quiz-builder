@@ -7,7 +7,9 @@ export const questionSchema = z.object({
   text: z.string(),
   type: questionTypeSchema,
   options: z.array(z.string()),
-  correctAnswer: z.number().int().nullable(),
+  correctAnswerBoolean: z.boolean().nullable(),
+  correctAnswerInput: z.string().nullable(),
+  correctAnswerCheckbox: z.array(z.number().int()).nullable(),
 });
 
 export const quizSchema = z.object({
@@ -31,7 +33,9 @@ export const createQuestionSchema = z
     text: z.string().trim().min(1, 'Question text is required'),
     type: questionTypeSchema,
     options: z.array(z.string().trim().min(1, 'Option cannot be empty')).optional(),
-    correctAnswer: z.number().int().nonnegative().optional(),
+    correctAnswerBoolean: z.boolean().optional(),
+    correctAnswerInput: z.string().trim().optional(),
+    correctAnswerCheckbox: z.array(z.number().int()).optional(),
   })
   .superRefine((question, ctx) => {
     if (question.type === 'CHECKBOX') {
@@ -45,21 +49,18 @@ export const createQuestionSchema = z
         });
       }
 
-      if (question.correctAnswer !== undefined && question.correctAnswer >= options.length) {
-        ctx.addIssue({
-          code: 'custom',
-          path: ['correctAnswer'],
-          message: 'The correct answer must point to an existing option',
-        });
+      if (question.correctAnswerCheckbox) {
+        for (const index of question.correctAnswerCheckbox) {
+          if (index < 0 || index >= options.length) {
+            ctx.addIssue({
+              code: 'custom',
+              path: ['correctAnswerCheckbox'],
+              message: 'The correct answer must point to an existing option',
+            });
+            break;
+          }
+        }
       }
-    }
-
-    if (question.type === 'BOOLEAN' && question.correctAnswer !== undefined && question.correctAnswer > 1) {
-      ctx.addIssue({
-        code: 'custom',
-        path: ['correctAnswer'],
-        message: 'A boolean question accepts only 0 (true) or 1 (false)',
-      });
     }
   });
 
