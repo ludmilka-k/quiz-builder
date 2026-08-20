@@ -17,7 +17,7 @@ export class QuizzesService {
             options: q.options ?? [],
             correctAnswerBoolean: q.correctAnswerBoolean ?? null,
             correctAnswerInput: q.correctAnswerInput ?? null,
-            correctAnswerCheckbox: q.correctAnswerCheckbox ?? null,
+            correctAnswerCheckbox: q.correctAnswerCheckbox ?? [],
           })),
         },
       },

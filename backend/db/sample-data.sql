@@ -18,17 +18,17 @@ VALUES
     'TypeScript is a statically typed superset of JavaScript.',
     'BOOLEAN',
     ARRAY[]::TEXT[],
-    NULL,
+    'true',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     NOW(),
     NOW()
   ),
   (
     'q1000001-0000-0000-0000-000000000002',
-    'What keyword is used to declare a typed variable in TypeScript?',
+    'What keyword is used to declare a variable in TypeScript?',
     'INPUT',
     ARRAY[]::TEXT[],
-    NULL,
+    'let',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     NOW(),
     NOW()
@@ -38,7 +38,7 @@ VALUES
     'Which of the following are primitive types in TypeScript?',
     'CHECKBOX',
     ARRAY['string', 'number', 'boolean', 'object', 'symbol'],
-    NULL,
+    '{0,1,2,4}',
     'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
     NOW(),
     NOW()
@@ -61,7 +61,7 @@ VALUES
     'TypeScript interfaces can extend multiple other interfaces.',
     'BOOLEAN',
     ARRAY[]::TEXT[],
-    NULL,
+    'true',
     'b2c3d4e5-f6a7-8901-bcde-fa2345678901',
     NOW(),
     NOW()
@@ -71,7 +71,7 @@ VALUES
     'What TypeScript feature allows you to write reusable components that work with any data type?',
     'INPUT',
     ARRAY[]::TEXT[],
-    NULL,
+    'generics',
     'b2c3d4e5-f6a7-8901-bcde-fa2345678901',
     NOW(),
     NOW()
@@ -81,7 +81,7 @@ VALUES
     'Which of the following utility types are built into TypeScript?',
     'CHECKBOX',
     ARRAY['Partial', 'Required', 'Readonly', 'Mutable', 'Pick', 'Omit'],
-    NULL,
+    '{0,1,2,4,5}',
     'b2c3d4e5-f6a7-8901-bcde-fa2345678901',
     NOW(),
     NOW()
@@ -91,7 +91,7 @@ VALUES
     'TypeScript enums compile down to plain JavaScript objects.',
     'BOOLEAN',
     ARRAY[]::TEXT[],
-    NULL,
+    'true',
     'b2c3d4e5-f6a7-8901-bcde-fa2345678901',
     NOW(),
     NOW()
@@ -101,7 +101,7 @@ VALUES
     'What symbol is used to mark a property as optional in a TypeScript interface?',
     'INPUT',
     ARRAY[]::TEXT[],
-    NULL,
+    '?',
     'b2c3d4e5-f6a7-8901-bcde-fa2345678901',
     NOW(),
     NOW()
@@ -124,7 +124,7 @@ VALUES
     'TypeScript supports declaration merging for interfaces.',
     'BOOLEAN',
     ARRAY[]::TEXT[],
-    NULL,
+    'true',
     'c3d4e5f6-a7b8-9012-cdef-ab3456789012',
     NOW(),
     NOW()
@@ -134,7 +134,7 @@ VALUES
     'What is the name of the TypeScript feature that extracts the type of a variable at compile time?',
     'INPUT',
     ARRAY[]::TEXT[],
-    NULL,
+    'typeof',
     'c3d4e5f6-a7b8-9012-cdef-ab3456789012',
     NOW(),
     NOW()
@@ -144,7 +144,7 @@ VALUES
     'Which of the following are valid TypeScript mapped type modifiers?',
     'CHECKBOX',
     ARRAY['+readonly', '-readonly', '+?', '-?', '!optional'],
-    NULL,
+    '{0,1,2,3}',
     'c3d4e5f6-a7b8-9012-cdef-ab3456789012',
     NOW(),
     NOW()
@@ -154,7 +154,7 @@ VALUES
     'The "never" type in TypeScript can be assigned to any other type.',
     'BOOLEAN',
     ARRAY[]::TEXT[],
-    NULL,
+    'false',
     'c3d4e5f6-a7b8-9012-cdef-ab3456789012',
     NOW(),
     NOW()
@@ -164,17 +164,7 @@ VALUES
     'Which TypeScript keyword is used to narrow types within conditional branches?',
     'INPUT',
     ARRAY[]::TEXT[],
-    NULL,
-    'c3d4e5f6-a7b8-9012-cdef-ab3456789012',
-    NOW(),
-    NOW()
-  ),
-  (
-    'q3000003-0000-0000-0000-000000000006',
-    'Which of the following are examples of TypeScript conditional types?',
-    'CHECKBOX',
-    ARRAY['T extends U ? X : Y', 'infer R', 'keyof T', 'NonNullable<T>', 'ReturnType<T>'],
-    NULL,
+    'instanceof',
     'c3d4e5f6-a7b8-9012-cdef-ab3456789012',
     NOW(),
     NOW()
