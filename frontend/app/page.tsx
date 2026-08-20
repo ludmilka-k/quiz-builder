@@ -14,7 +14,10 @@ export default function Home() {
         <p className="text-gray-600 mb-4">
           A modern full-stack application powered by NestJS, Next.js, PostgreSQL, and Prisma ORM.
         </p>
-        <Link href="/quizzes" className="bg-green-500 text-white p-2 rounded mb-4 hover:text-indigo-600 font-medium">Go To Quizzes</Link>
+        <div className="space-x-4">
+          <Link href="/quizzes" className="bg-green-500 text-white p-3 rounded hover:text-indigo-600 font-medium">Go To Quizzes</Link>
+          <Link href="/create" className="bg-blue-500 text-white p-3 rounded font-bold hover:text-indigo-600">Create Quiz</Link>
+        </div>
       </div>
     </div>
   );
